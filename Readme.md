@@ -35,7 +35,7 @@ This repository is a personal learning focused on Data Structures and Algorithms
 
 ```bash
 # Clone the repository
-git clone https://github.com/intropercib/dsa.git
+git clone https://github.com/intropercib/DSA.git
 
 # Navigate to the project directory
 cd dsa
@@ -49,8 +49,9 @@ dsa/
 │
 ├── data-structures/
 │   ├── stack/
-│   │   ├── main.cpp
-│   │   └── Info.md
+│   │   ├── code1.cpp  // Implementation of Top-Varying
+│   │   ├── code2.cpp  // Implementation of Bottom-Varying
+│   │   └── Info.md    // Information about Stack
 ├── algorithms/
 │
 ```
@@ -90,3 +91,5 @@ git push origin new-concept
 ---
 
 # 🚀 HAPPY CODING! 🌈
+
+---
