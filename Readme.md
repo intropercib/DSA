@@ -38,7 +38,7 @@ This repository is a personal learning focused on Data Structures and Algorithms
 git clone https://github.com/intropercib/DSA.git
 
 # Navigate to the project directory
-cd dsa
+cd DSA
 
 ```
 
