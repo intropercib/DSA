@@ -1,5 +1,5 @@
 /*
- * Stack Implementation in C++ (Top-Varying Stack)
+ * Stack Implementation in C++ (Bottom-Varying Stack)
  * ----------------------------------------------
  * Provides a menu-driven interface to interact with the stack and perform various operations.
  */
@@ -10,7 +10,7 @@ using namespace std;
 class Stack
 {
     int *arr;    // Pointer to the dynamically allocated array to store stack elements
-    int TOP;     // Index of the top element in the stack
+    int BOS;     // Index of the bottom element in the stack (0-based index)
     int MAXSIZE; // Maximum allowable size of the stack
 
 public:
@@ -19,7 +19,7 @@ public:
     {
         arr = new int[size]; // Dynamically allocate memory for the stack
         MAXSIZE = size;      // Set the maximum capacity of the stack
-        TOP = -1;            // Initialize the top index to -1 indicating the stack is empty
+        BOS = 0;             // Initialize the bottom index to 0 indicating the stack is empty
     }
 
     // Destructor: Frees the dynamically allocated memory for the stack
@@ -28,57 +28,69 @@ public:
         delete[] arr;
     }
 
-    // Push: Adds an element to the top of the stack
+    // Push: Adds an element to the bottom of the stack
     void push(int x)
     {
-        if (TOP == MAXSIZE - 1)
+        if (BOS == MAXSIZE)
         {
-            cout << "Overflow: Stack is full. Cannot add more elements." << endl;
+            cout << "Overflow: Stack is full. Cannot add more elements." << endl; // Overflow error
         }
         else
         {
-            arr[++TOP] = x;
+            // Shift elements upwards to make space at the bottom
+            for (int i = BOS; i > 0; i--)
+            {
+                arr[i] = arr[i - 1];
+            }
+            arr[0] = x;
+            BOS++;
         }
         display();
     }
 
-    // Pop: Removes and returns the top element from the stack
+    // Pop: Removes and returns the bottom element from the stack
     int pop()
     {
-        if (TOP == -1)
+        if (BOS == 0)
         {
             cout << "Underflow: Stack is empty. No element to pop." << endl;
             return -1;
         }
         else
         {
-            int poppedValue = arr[TOP--];
+            int poppedValue = arr[0];
+            BOS--;
+            // Shift elements down to fill the gap created by the popped element
+            for (int i = 0; i < BOS; i++)
+            {
+                arr[i] = arr[i + 1];
+            }
             display();
             return poppedValue;
         }
     }
 
-    // Peek: Returns the top element without removing it from the stack
+    // Peek: Returns the bottom element without removing it from the stack
     int peek()
     {
-        if (TOP == -1)
+        if (BOS == 0)
         {
-            cout << "Stack is empty: No top element to view." << endl;
+            cout << "Stack is empty: No bottom element to view." << endl;
             return -1;
         }
-        return arr[TOP];
+        return arr[0];
     }
 
     // Empty: Checks if the stack is empty
     bool empty()
     {
-        return TOP == -1;
+        return BOS == 0;
     }
 
     // Size: Returns the number of elements currently in the stack
     int size()
     {
-        return TOP + 1;
+        return BOS;
     }
 
     // Display: Outputs the current state of the stack to the console
@@ -86,16 +98,13 @@ public:
     {
         cout << "Current stack state: [ ";
         // Loop through the stack array and display its contents
-        for (int i = MAXSIZE - 1; i >= 0; i--)
+        for (int i = 0; i < BOS; i++)
         {
-            if (i <= TOP) // If the index is less than or equal to top, the position holds a valid element
-            {
-                cout << arr[i] << " ";
-            }
-            else
-            {
-                cout << "- "; // Dash for empty positions
-            }
+            cout << arr[i] << " ";
+        }
+        for (int i = BOS; i < MAXSIZE; i++)
+        {
+            cout << "- "; // Dash for empty positions
         }
         cout << "]" << endl;
     }
@@ -135,7 +144,7 @@ int main()
             break;
 
         case 3: // Peek operation
-            cout << "Top element: " << s.peek() << endl;
+            cout << "Bottom element: " << s.peek() << endl;
             break;
 
         case 4: // Size operation
