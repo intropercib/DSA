@@ -4,11 +4,13 @@ A comprehensive repository documenting my journey of learning Data Structures an
 
 ## 🌟 Table of Contents
 
-- [Introduction](#introduction)
-- [Topics](#topics)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
+- [Introduction](#-introduction)
+- [Topics](#-topics)
+  - [Data Structures](#-data-structures)
+  - [Algorithms](#-algorithms)
+- [Getting Started](#-getting-started)
+- [File Structure](#-file-structure)
+- [Contributing](#-contributing)
 
 ## 🎯 Introduction
 
@@ -40,7 +42,7 @@ cd dsa
 
 ```
 
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
 dsa/
