@@ -34,12 +34,14 @@ public:
         if (TOP == MAXSIZE - 1)
         {
             cout << "Overflow: Stack is full. Cannot add more elements." << endl;
+            display();
+            return;
         }
         else
         {
             arr[++TOP] = x;
+            display();
         }
-        display();
     }
 
     // Pop: Removes and returns the top element from the stack
@@ -48,6 +50,7 @@ public:
         if (TOP == -1)
         {
             cout << "Underflow: Stack is empty. No element to pop." << endl;
+            display();
             return -1;
         }
         else
