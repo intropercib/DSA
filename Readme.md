@@ -21,6 +21,7 @@ This repository is a personal learning focused on Data Structures and Algorithms
 ### 📊 Data Structures
 
 - [Stack](/data-structures/stack/)
+- [Queue](/data-structures/queue/)
 
 ### 🔬 Algorithms
 
@@ -52,6 +53,11 @@ dsa/
 │   │   ├── code1.cpp  // Implementation of Top-Varying
 │   │   ├── code2.cpp  // Implementation of Bottom-Varying
 │   │   └── Info.md    // Information about Stack
+│   ├── queue/
+│   │   ├── code1.cpp  // Implementation of  Head fixed, Tail varying
+│   │   ├── code2.cpp  // Implementation of  Head, Tail varying
+│   │   ├── code3.cpp  // Implementation of Circular Queue
+│   │   └── Info.md    // Information about Queue
 ├── algorithms/
 │
 ```
